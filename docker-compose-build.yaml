@@ -1,0 +1,8 @@
+version: '2'
+services:
+  builder:
+    image: skidder/golang-builder:golang-1.7.4
+    volumes:
+      - .:/go/src/github.com/influxdata/influxdb-relay
+    entrypoint: /bin/sh
+    command: -c "go get github.com/naoina/toml && go get github.com/influxdata/influxdb/models && go build -o /go/src/github.com/influxdata/influxdb-relay/influxdb-relay github.com/influxdata/influxdb-relay"
